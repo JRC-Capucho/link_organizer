@@ -57,8 +57,13 @@ class LinkController extends Controller
      */
     public function update(UpdateLinkRequest $request, Link $link)
     {
+        $data = $request->validated();
 
-        $link->fill($request->validated())->save();
+        if ($file = $request->photo) {
+            $data['photo'] = $file->storeAs('photos');
+        }
+
+        $link->fill($data)->save();
 
         return to_route('dashboard')->with('message', 'Update successful');
     }

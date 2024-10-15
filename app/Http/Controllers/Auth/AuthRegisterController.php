@@ -15,7 +15,7 @@ class AuthRegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        if (!$request->tryToRegister()) {
+        if (! $request->tryToRegister()) {
             return back()->with(['message' => 'Fail to create account']);
         }
 

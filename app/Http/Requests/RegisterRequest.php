@@ -14,6 +14,7 @@ use Illuminate\Validation\Rules\Password;
  * @property-read string $email
  * @property-read string $password
  */
+
 class RegisterRequest extends FormRequest
 {
     /**
@@ -33,10 +34,10 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string'],
+            'name' => ['required', 'string'],
             'lastname' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'string', Password::default()]
+            'password' => ['required', 'string', Password::default()],
         ];
     }
 
@@ -47,6 +48,5 @@ class RegisterRequest extends FormRequest
         auth()->login($user);
 
         return true;
-
     }
 }

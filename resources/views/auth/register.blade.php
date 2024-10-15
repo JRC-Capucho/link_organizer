@@ -1,62 +1,62 @@
-<x-layout.app>
-    <div class="p-5 flex bg-b_primary gap-10">
+<x-layout.initial>
+    <div class="w-full max-w-md mx-auto">
         @if ($message = session()->get('message'))
             <div>
                 {{ $message }}
             </div>
         @endif
+        <div class="grid gap-12">
 
-        <img src="/storage/imgs/thumbnail.svg" alt="sun tornado" />
+            <form class="form-control flex flex-col gap-4" action="{{ route('register') }}" method="post">
+                @csrf
 
-        <div class="grid gap-16 px-20">
-            <img src="/storage/imgs/logo.svg" alt="sun tornado" />
+                <div class="grid  grid-cols-1 lg:grid-cols-2 gap-4">
+                    <label class="input input-bordered flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                            class="h-4 w-4 min-w-4 opacity-70">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+                        </svg>
+                        <input type="text" class="grow" placeholder="Name" name="name" />
+                    </label>
 
 
-            <div class="grid gap-10">
-                <h1 class="text-white text-xl">Register a account</h1>
+                    <input class="input input-bordered" type="text" placeholder="Last name" name="lastname" />
+                </div>
 
-                <form action="{{ route('register') }}" method="post" class="text-white">
-                    @csrf
+                <div>
+                    <label class="input input-bordered flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                            class="h-4 w-4 opacity-70">
+                            <path
+                                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                            <path
+                                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+                        </svg>
+                        <input type="text" class="grow" placeholder="Email" name="email" />
+                    </label>
+                    @error('email')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
 
-                    <div class="flex justify-between gap-5">
-                        <div class="grid">
-                            <labe>Name</labe>
-                            <input name="name" placeholder="name" />
-                            @error('name')
-                                <span>{{ $message }}</span>
-                            @enderror
-                        </div>
 
-                        <div class="grid">
-                            <label>Last name</label>
-                            <input name="lastname" placeholder="last name" />
-                            @error('lastname')
-                                <span>{{ $message }}</span>
-                            @enderror
-                        </div>
+                <div>
+                    <label class="input input-bordered flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                            class="h-4 w-4 opacity-70">
+                            <path fill-rule="evenodd"
+                                d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <input type="password" class="grow" value="password" name="password" />
+                    </label>
+                    @error('password')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
 
-                    </div>
-                    <div class="grid">
-                        <label>Email</label>
-                        <input name="email" placeholder="email" value="{{ old('email') }}" />
-                        @error('email')
-                            <span>{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="grid">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="password" />
-                        @error('password')
-                            <span>{{ $message }}</span>
-                        @enderror
-                    </div>
-
-            </div>
-            <button class="bg-a_orange">Register</button>
-
-            </button>
-
+                <button class="btn bg-a_orange">Login</button>
+            </form>
         </div>
-    </div>
-</x-layout.app>
+</x-layout.initial>

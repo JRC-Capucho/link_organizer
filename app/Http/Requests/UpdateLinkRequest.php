@@ -3,7 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
+/**
+ * @property-read string $title
+ * @property-read string $platform_name
+ * @property-read string $url
+ * @property-read UploadedFile $photo
+ */
 class UpdateLinkRequest extends FormRequest
 {
     /**
@@ -25,6 +32,7 @@ class UpdateLinkRequest extends FormRequest
             'title' => ['required', 'string'],
             'platform_name' => ['required', 'string'],
             'url' => ['required', 'url'],
+            'photo' => ['nullable', 'image'],
         ];
     }
 }

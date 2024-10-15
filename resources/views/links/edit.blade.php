@@ -12,6 +12,14 @@
                     @csrf
                     @method('put')
 
+                    <div>
+                        <input type="file" name="photo" />
+                        @error('photo')
+                            <span>{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <br>
+
 
                     <div>
                         <input name="title" placeholder="title" value="{{ old('title', $link->title) }}" />
